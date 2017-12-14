@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug in docker",
+            "type": "go",
+            "request": "launch",
+            "mode": "custom",
+            "remotePath": "/go/src/github.com/wader/vscode-go-debug-test",
+            "port": 2345,
+            "host": "127.0.0.1",
+            "program": "${workspaceRoot}",
+            "custom": [
+                "docker",
+                "run",
+                "--init",
+                "--privileged",
+                "--rm",
+                "-p",
+                "127.0.0.1:2345:2345",
+                "--entrypoint",
+                "dlv",
+                "-v",
+                "${workspaceRoot}:/go/src/github.com/wader/vscode-go-debug-test",
+                "-w",
+                "/go/src/github.com/wader/vscode-go-debug-test",
+                "vscode-go-debug-test",
+                "debug",
+                "--headless",
+                "--listen",
+                "0.0.0.0:2345",
+                "."
+            ]
+        }
+    ]
+}
