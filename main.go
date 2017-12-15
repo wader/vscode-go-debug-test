@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	// set a breakpoint below and do "Docker in docker"
+	// set a breakpoint below and do "Debug in docker"
 	v := "test"
 	log.Printf("%#v", v)
 }
